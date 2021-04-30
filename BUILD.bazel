@@ -1,5 +1,6 @@
 genrule(
-    name = "hello20s",
-    outs = ["hello20s.txt"],
-    cmd_bash = "sleep 20 && echo 'hello20s' >$@",
+    name = "version",
+    srcs = [".git"],
+    outs = ["version.txt"],
+    cmd_bash = "git --git-dir=$(location :.git) describe --always --dirty |tee $@",
 )
